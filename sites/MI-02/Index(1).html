@@ -17,90 +17,55 @@
     }
 
     body {
-      background-color: #000;
+      background-color: #0a0a0a;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(255, 215, 0, 0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 45%),
+        radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px;
       color: #FFD700;
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
-      padding: 0;
       display: flex;
       flex-direction: column;
     }
 
-    /* Back button override for dark theme */
     .back-to-showcase {
       color: #FFD700;
     }
 
-    /* Top header bar */
-    .site-header {
+    /* ── Top bar: back link + logo + title ── */
+    .top-bar {
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 1.5rem 2rem 0.5rem;
+      padding: 1.2rem 2rem 0.8rem;
     }
 
-    .site-header .logo {
-      font-size: 3rem;
-      line-height: 1;
-      color: #FFD700;
-    }
-
-    .site-header h1 {
-      font-size: 2.8rem;
+    .top-bar h1 {
+      font-size: 2.4rem;
       font-weight: 700;
       color: #FFD700;
       letter-spacing: -0.02em;
     }
 
-    .site-header .district {
-      font-size: 0.9rem;
-      color: #b8a000;
-      margin-left: auto;
-    }
-
-    /* Staggered grid layout */
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto 1fr 1fr 1fr;
-      gap: 1.5rem;
-      padding: 1.5rem 2rem 2rem;
+    /* ── Main scene ── */
+    .scene {
+      display: flex;
+      gap: 2rem;
+      padding: 0 2rem 2.5rem;
       flex: 1;
+      align-items: stretch;
     }
 
-    /* Title spans full left column, rows 1-2 */
-    .site-title-block {
-      grid-column: 1;
-      grid-row: 1 / 2;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding-bottom: 0.5rem;
-    }
-
-    .site-title-block .logo {
-      font-size: 3rem;
-      color: #FFD700;
-      line-height: 1;
-    }
-
-    .site-title-block h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #FFD700;
-      letter-spacing: -0.02em;
-    }
-
-    /* Video spans rows 2-4 on left */
+    /* ── Video / left panel ── */
     .video-box {
-      grid-column: 1;
-      grid-row: 2 / 5;
+      width: 58%;
+      flex-shrink: 0;
       background-color: #1a1a00;
       border: 2px solid #FFD700;
-      border-radius: 12px;
-      height: 220px;
-      align-self: center;
-      margin: 1.5rem 2rem;
+      border-radius: 16px;
+      min-height: 340px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -114,95 +79,114 @@
       width: 100%;
       height: 100%;
       border: none;
+      display: block;
     }
 
-    /* About Us: row 1 on right — shifted right */
-    .card-about-us {
-      grid-column: 2;
-      grid-row: 1 / 3;
-      margin-left: 2.5rem;
+    /* ── Cards column ── */
+    .cards-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      gap: 1.2rem;
     }
 
-    /* About PhishingHook: row 3 on right — centered */
-    .card-about-app {
-      grid-column: 2;
-      grid-row: 3 / 4;
-      margin-left: 1rem;
-      margin-right: 1rem;
-    }
-
-    /* Links: row 4 on right — shifted right */
-    .card-links {
-      grid-column: 2;
-      grid-row: 4 / 5;
-      margin-left: 2.5rem;
-    }
-
+    /* Base card */
     .card {
-      background-color: #111100;
-      border: 2px solid #FFD700;
-      border-radius: 12px;
-      padding: 1.5rem;
+      background-color: #1c1c1c;
+      border-radius: 14px;
+      padding: 1.4rem 1.6rem;
     }
 
     .card h2 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       color: #FFD700;
-      margin-bottom: 0.75rem;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .card p {
-      line-height: 1.7;
-      color: #e6c200;
-      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #ccc;
+      font-size: 0.9rem;
     }
 
-    /* Links card */
+    /* ── Stagger: About Us → pushed right ── */
+    .card-about-us {
+      align-self: flex-end;
+      width: 88%;
+    }
+
+    /* ── Stagger: About PhishingHook → centered ── */
+    .card-about-app {
+      align-self: center;
+      width: 94%;
+    }
+
+    /* ── Stagger: Links → yellow, pushed right ── */
+    .card-links {
+      align-self: flex-end;
+      width: 88%;
+      background-color: #FFD700;
+      color: #000;
+    }
+
+    .card-links h2 {
+      color: #000;
+    }
+
+    .card-links p {
+      color: #222;
+    }
+
     .link-group {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
     }
 
     .link-group a {
-      color: #FFD700;
+      color: #000;
+      font-weight: 600;
+      font-size: 0.9rem;
       text-decoration: underline;
-      font-size: 0.95rem;
     }
 
     .link-group a:hover {
-      color: #fff;
+      color: #444;
     }
 
-    /* Footer */
+    /* ── Footer ── */
     footer {
       text-align: center;
-      padding: 1.5rem;
-      border-top: 1px solid #333300;
-      color: #b8a000;
-      font-size: 0.85rem;
+      padding: 1.2rem;
+      border-top: 1px solid #2a2a00;
+      color: #888;
+      font-size: 0.8rem;
     }
 
-    footer a {
-      color: #FFD700;
-    }
+    footer a { color: #FFD700; }
 
-    /* Responsive: stack on small screens */
+    /* ── Responsive ── */
     @media (max-width: 640px) {
-      .layout {
-        grid-template-columns: 1fr;
-        padding: 1rem;
+      .scene {
+        flex-direction: column;
+        padding: 0 1rem 2rem;
       }
 
-      .site-header {
-        padding: 1rem 1rem 0.25rem;
+      .video-box {
+        width: 100%;
+        min-height: 220px;
       }
 
-      .site-header h1 {
-        font-size: 2rem;
+      .card-about-us,
+      .card-about-app,
+      .card-links {
+        align-self: stretch;
+        width: 100%;
       }
     }
   </style>
@@ -211,44 +195,47 @@
 
   <a href="../../" class="back-to-showcase">&larr; Back to Showcase</a>
 
-  <!-- Staggered grid layout -->
-  <div class="layout">
+  <!-- Top bar: logo + title -->
+  <div class="top-bar">
+    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 861" style="height:50px;width:auto;fill:#FFD700;">
+      <path fill-rule="evenodd" d="m548.57 433.02l-548.57 316.72v-201.62l191.45-110.53-191.45-110.54v-210.74z"/>
+    </svg>
+    <h1>PhishingHook</h1>
+  </div>
 
-    <!-- Row 1 left: title block -->
-    <div class="site-title-block">
-      <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 861" style="height:60px;width:auto;fill:#FFD700;">
-        <path fill-rule="evenodd" d="m548.57 433.02l-548.57 316.72v-201.62l191.45-110.53-191.45-110.54v-210.74z"/>
-      </svg>
-      <h1>PhishingHook</h1>
-    </div>
+  <!-- Main scene: video left, cards right -->
+  <div class="scene">
 
-    <!-- Row 1-2 right: About Us (starts high, taller) -->
-    <div class="card card-about-us">
-      <h2>About Us</h2>
-      <p>We are a team of three from Mr. Fabera's A.M. cybersecurity class at the Bay Arenac ISD.</p>
-    </div>
-
-    <!-- Rows 2-4 left: Video (tall, below title) -->
+    <!-- Left: large video -->
     <div class="video-box">
-      <!-- Replace with: <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
-      Video
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
-    <!-- Row 3 right: About PhishingHook (mid-level) -->
-    <div class="card card-about-app">
-      <h2>About PhishingHook</h2>
-      <p>PhishingHook is a website designed to raise cybersecurity awareness. With interactive quizzes to test your knowledge, it helps everyday users recognize phishing attempts, social engineering tactics, and common online threats — before they become victims.</p>
-    </div>
+    <!-- Right: staggered cards -->
+    <div class="cards-col">
 
-    <!-- Row 4 right: Links (bottom) -->
-    <div class="card card-links">
-      <h2>Links</h2>
-      <div class="link-group">
-        <a href="https://example.com">Link 1</a>
-        <a href="https://example.com">Link 2</a>
+      <!-- Top card — pushed right -->
+      <div class="card card-about-us">
+        <h2>About Us</h2>
+        <p>We are a team of three from Mr. Fabera's A.M. cybersecurity class at the Bay Arenac ISD.</p>
       </div>
-    </div>
 
+      <!-- Middle card — centered -->
+      <div class="card card-about-app">
+        <h2>About PhishingHook</h2>
+        <p>PhishingHook is a website designed to raise cybersecurity awareness. With interactive quizzes to test your knowledge, it helps everyday users recognize phishing attempts, social engineering tactics, and common online threats — before they become victims.</p>
+      </div>
+
+      <!-- Bottom card — yellow, pushed right -->
+      <div class="card card-links">
+        <h2>Links</h2>
+        <div class="link-group">
+          <a href="https://example.com">Link 1</a>
+          <a href="https://example.com">Link 2</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <footer>
