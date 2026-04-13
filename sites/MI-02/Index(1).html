@@ -3,44 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Tab Name -->
   <title>PhishingHook</title>
-
-  <!-- Required to keep this? -->
-    <link rel="stylesheet" href="../../assets/css/shared.css">
+  <link rel="stylesheet" href="../../assets/css/shared.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #000;
+      color: #FFD700;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Back button override for dark theme */
+    .back-to-showcase {
+      color: #FFD700;
+    }
+
+    /* Top header bar */
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem 2rem 0.5rem;
+    }
+
+    .site-header .logo {
+      font-size: 3rem;
+      line-height: 1;
+      color: #FFD700;
+    }
+
+    .site-header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #FFD700;
+      letter-spacing: -0.02em;
+    }
+
+    .site-header .district {
+      font-size: 0.9rem;
+      color: #b8a000;
+      margin-left: auto;
+    }
+
+    /* Staggered grid layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr 1fr 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem 2rem;
+      flex: 1;
+    }
+
+    /* Title spans full left column, rows 1-2 */
+    .site-title-block {
+      grid-column: 1;
+      grid-row: 1 / 2;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .site-title-block .logo {
+      font-size: 3rem;
+      color: #FFD700;
+      line-height: 1;
+    }
+
+    .site-title-block h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #FFD700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Video spans rows 2-4 on left */
+    .video-box {
+      grid-column: 1;
+      grid-row: 2 / 5;
+      background-color: #1a1a00;
+      border: 2px solid #FFD700;
+      border-radius: 12px;
+      height: 220px;
+      align-self: center;
+      margin: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #FFD700;
+      overflow: hidden;
+    }
+
+    .video-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* About Us: row 1 on right — shifted right */
+    .card-about-us {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      margin-left: 2.5rem;
+    }
+
+    /* About PhishingHook: row 3 on right — centered */
+    .card-about-app {
+      grid-column: 2;
+      grid-row: 3 / 4;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    /* Links: row 4 on right — shifted right */
+    .card-links {
+      grid-column: 2;
+      grid-row: 4 / 5;
+      margin-left: 2.5rem;
+    }
+
+    .card {
+      background-color: #111100;
+      border: 2px solid #FFD700;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #FFD700;
+      margin-bottom: 0.75rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .card p {
+      line-height: 1.7;
+      color: #e6c200;
+      font-size: 0.95rem;
+    }
+
+    /* Links card */
+    .link-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .link-group a {
+      color: #FFD700;
+      text-decoration: underline;
+      font-size: 0.95rem;
+    }
+
+    .link-group a:hover {
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid #333300;
+      color: #b8a000;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #FFD700;
+    }
+
+    /* Responsive: stack on small screens */
+    @media (max-width: 640px) {
+      .layout {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      .site-header {
+        padding: 1rem 1rem 0.25rem;
+      }
+
+      .site-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
-<body style="background-color: black; color: yellow; font-family: Inter, sans-serif; margin: 0; padding: 20px;">   <!-- Back button — links to the main showcase -->
+<body>
+
   <a href="../../" class="back-to-showcase">&larr; Back to Showcase</a>
 
-  <div class="Name">
-    <h1>PishingHook</h1>
-    <p>MI-02</p>
+  <!-- Staggered grid layout -->
+  <div class="layout">
+
+    <!-- Row 1 left: title block -->
+    <div class="site-title-block">
+      <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 861" style="height:60px;width:auto;fill:#FFD700;">
+        <path fill-rule="evenodd" d="m548.57 433.02l-548.57 316.72v-201.62l191.45-110.53-191.45-110.54v-210.74z"/>
+      </svg>
+      <h1>PhishingHook</h1>
+    </div>
+
+    <!-- Row 1-2 right: About Us (starts high, taller) -->
+    <div class="card card-about-us">
+      <h2>About Us</h2>
+      <p>We are a team of three from Mr. Fabera's A.M. cybersecurity class at the Bay Arenac ISD.</p>
+    </div>
+
+    <!-- Rows 2-4 left: Video (tall, below title) -->
+    <div class="video-box">
+      <!-- Replace with: <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
+      Video
+    </div>
+
+    <!-- Row 3 right: About PhishingHook (mid-level) -->
+    <div class="card card-about-app">
+      <h2>About PhishingHook</h2>
+      <p>PhishingHook is a website designed to raise cybersecurity awareness. With interactive quizzes to test your knowledge, it helps everyday users recognize phishing attempts, social engineering tactics, and common online threats — before they become victims.</p>
+    </div>
+
+    <!-- Row 4 right: Links (bottom) -->
+    <div class="card card-links">
+      <h2>Links</h2>
+      <div class="link-group">
+        <a href="https://example.com">Link 1</a>
+        <a href="https://example.com">Link 2</a>
+      </div>
+    </div>
+
   </div>
-    <img src="Placeholderlogo.png" alt="placeholderlogo"
 
-<div class="video-section">
-    <p>Video</p>
-</div>
+  <footer>
+    <p>Congressional App Challenge &bull; <a href="../../">Back to Showcase</a></p>
+  </footer>
 
-<div class="card">
-  <h2>About Us</h2>
-  <p>Sentences abotu the creation process</p>
-</div>
-
-<div class="card">
-  <h2>About PhishingHook</h2> 
-  <p>senctences about phishinghook</p>
-</div>
-
-<div class="card">
-  <h2>Links</h2>
-   <a href="https://example.com">Link 1</a>
-    <a href="https://example.com">Link 2</a>
-</div>
-
+  <script src="../../assets/js/nav.js" data-root="../../"></script>
 </body>
-<html>
+</html>
