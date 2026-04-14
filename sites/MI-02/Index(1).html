@@ -34,7 +34,7 @@
       flex-direction: column;
     }
 
-    /* ── Back button override — match hacker vibe ── */
+    /* Back button */
     .back-to-showcase {
       position: fixed;
       top: 1rem;
@@ -57,7 +57,7 @@
       box-shadow: 0 0 14px rgba(255, 215, 0, 0.5);
     }
 
-    /* ── Top bar ── */
+    /* Top bar */
     .top-bar {
       display: flex;
       align-items: flex-end;
@@ -88,7 +88,7 @@
       50%       { opacity: 0; }
     }
 
-    /* ── Main scene ── */
+    /* Main scene */
     .scene {
       display: flex;
       gap: 2rem;
@@ -106,7 +106,7 @@
       padding-top: 3rem;
     }
 
-    /* ── Video panel ── */
+    /* Video panel */
     .video-box {
       width: 100%;
       border: 2px solid #FFD700;
@@ -118,7 +118,7 @@
       height: 0;
     }
 
-    .video-box iframe {
+    .video-box video {
       position: absolute;
       top: 0;
       left: 0;
@@ -126,9 +126,10 @@
       height: 100%;
       border: none;
       display: block;
+      background: #000;
     }
 
-    /* ── Cards column ── */
+    /* Cards column */
     .cards-col {
       flex: 1;
       display: flex;
@@ -182,22 +183,38 @@
 
     .link-group a:hover { color: #444; }
 
-    /* ── Footer ── */
+    /* Footer */
     footer {
       text-align: center;
       padding: 1rem;
-      border-top: 1px solid #2a2a00;
       color: #555;
       font-size: 0.8rem;
     }
 
     /* ── Responsive ── */
-    @media (max-width: 640px) {
-      .top-bar { padding-left: 2rem; }
-      .top-bar h1 { font-size: 2.2rem; }
-      .scene { flex-direction: column; padding: 0 1rem 2rem; }
-      .video-box { width: 100%; padding-bottom: 56.25%; }
+
+    /* Small laptops / large tablets (landscape) */
+    @media (max-width: 1100px) {
+      .top-bar h1 { font-size: 3.5rem; }
+      .left-col { width: 52%; padding-top: 2rem; }
+      .card { padding: 1.1rem 1.3rem; }
+      .card p { font-size: 0.85rem; }
+    }
+
+    /* Tablets / small laptops */
+    @media (max-width: 860px) {
+      .top-bar h1 { font-size: 2.8rem; }
+      .scene { flex-direction: column; padding: 0 1.5rem 2rem; }
+      .left-col { width: 100%; padding-top: 1rem; }
+      .cards-col { justify-content: flex-start; }
       .card-about-us, .card-about-app, .card-links { align-self: stretch; width: 100%; }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .top-bar { padding: 3rem 1rem 0.5rem; }
+      .top-bar h1 { font-size: 2rem; }
+      .scene { padding: 0 1rem 2rem; }
     }
   </style>
 </head>
@@ -220,13 +237,9 @@
     <!-- Left: video centered in column -->
     <div class="left-col">
     <div class="video-box">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-        title="PhishingHook Demo"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
+      <video controls>
+        <source src="Congress_Showcase.mp4" type="video/mp4">
+      </video>
     </div>
     </div>
 
@@ -253,6 +266,8 @@
 
     </div>
   </div>
+
+
 
   <footer>
     <p>Congressional App Challenge &mdash; MI-02</p>
